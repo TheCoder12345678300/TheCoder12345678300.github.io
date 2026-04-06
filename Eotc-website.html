@@ -3,59 +3,392 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <title>Amen's Website - EOTC</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container px-lg-5">
-                <a class="navbar-brand" href="index.html">Amen's Website</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="About-Me.html">About Me</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Blog.html">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="Eotc-website.html">EOTC</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Header -->
-        <header class="py-5">
-            <div class="container px-lg-5">
-                <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
-                    <div class="m-4 m-lg-5">
-                        <h1 class="display-5 fw-bold">Eastern Orthodox Christianity</h1>
-                        <p class="fs-4">A rich history and faith preserved through thousands of years.</p>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- Content -->
-        <section class="pt-4 pb-5">
-            <div class="container px-lg-5">
-                <p class="fs-5">Eastern Orthodox Christianity is a branch of Christianity that traces its roots to the early Christian Church and is centered in the Eastern Mediterranean region.</p>
-                <h2 class="fw-bold mt-4">Church History Before the Bible</h2>
-                <p class="fs-5">This goes deep into the church's history without the Bible, just the Old Testament. The church was there before the Bible was created. Despite only having the prophets and the Old Testament, the church was fruitful and multiplied abundantly.</p>
-                <h2 class="fw-bold mt-4">The Nicene Creed</h2>
-                <p class="fs-5">The Orthodox Faith believes in the Nicene Creed, which is a clear statement of their faith overall.</p>
-                <h2 class="fw-bold mt-4">The 5 Pillars of the Faith</h2>
-                <p class="fs-5">1. Mystery of the Trinity — There is one God but in three persons: the Father, the Son, and the Holy Spirit.</p>
-            </div>
-        </section>
-        <!-- Footer -->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Amen's Website 2026</p></div>
-        </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/scripts.js"></script>
-    </body>
-</html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Amen's Website - EOTC</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #13131a;
+            --accent: #6c63ff;
+            --accent2: #ff6584;
+            --text: #f0f0f5;
+            --muted: #8888aa;
+            --border: rgba(255,255,255,0.08);
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10,10,15,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-brand {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .nav-brand span { color: var(--accent); }
+
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover { color: var(--text); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.active { color: var(--text); }
+        .nav-links a.active::after { width: 100%; }
+
+        .dark-toggle {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        .dark-toggle:hover { background: var(--accent); border-color: var(--accent); }
+
+        .hero {
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(108,99,255,0.15) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 20%, rgba(255,101,132,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            position: absolute; inset: 0;
+            background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                              linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; max-width: 800px; }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(108,99,255,0.15);
+            border: 1px solid rgba(108,99,255,0.3);
+            color: #a89cff;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            animation: fadeInDown 0.6s ease both;
+        }
+
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.7s ease 0.1s both;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            animation: fadeInUp 0.7s ease 0.2s both;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .eotc-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .eotc-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .eotc-card:hover { border-color: rgba(108,99,255,0.3); transform: translateY(-2px); }
+        .eotc-card:hover::before { transform: scaleX(1); }
+
+        .eotc-card h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .eotc-card h2 i { color: var(--accent); }
+        .eotc-card p { color: var(--muted); line-height: 1.8; }
+
+        .creed-text {
+            background: rgba(108,99,255,0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            color: var(--muted);
+            font-style: italic;
+            line-height: 2;
+        }
+
+        .pillar {
+            background: rgba(108,99,255,0.08);
+            border: 1px solid rgba(108,99,255,0.15);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            margin-top: 1rem;
+            color: var(--text);
+        }
+        .pillar strong { color: #a89cff; }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem; right: 2rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            z-index: 99;
+            box-shadow: 0 4px 15px rgba(108,99,255,0.4);
+        }
+        #back-to-top:hover { transform: scale(1.1); }
+        #back-to-top.show { display: flex; }
+
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        .footer-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .footer-brand span { color: var(--accent); }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .social-link {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+        .social-link:hover { background: var(--accent); border-color: var(--accent); color: white; }
+        .footer-copy { color: var(--muted); font-size: 0.85rem; }
+
+        body.light {
+            --bg: #f8f8fc;
+            --surface: #ffffff;
+            --text: #0a0a0f;
+            --muted: #666680;
+            --border: rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a class="nav-brand" href="index.html">Amen<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About-Me.html">About</a></li>
+            <li><a href="Blog.html">Blog</a></li>
+            <li><a href="Eotc-website.html" class="active">EOTC</a></li>
+        </ul>
+        <button class="dark-toggle" onclick="toggleTheme()">☀️ Light</button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-badge">✝️ Faith & History</div>
+            <h1>Eastern <span class="highlight">Orthodox</span> Christianity</h1>
+            <p>A rich history and faith preserved through thousands of years</p>
+        </div>
+    </section>
+
+    <div class="content-section">
+
+        <div class="eotc-card fade-in">
+            <h2><i class="bi bi-globe"></i> What is Eastern Orthodox Christianity?</h2>
+            <p>Eastern Orthodox Christianity is a branch of Christianity that traces its roots to the early Christian Church and is centered in the Eastern Mediterranean region. It is one of the most unique religions out there and stands out from broad Christianity, having been preserved through several thousand years of history.</p>
+        </div>
+
+        <div class="eotc-card fade-in">
+            <h2><i class="bi bi-book"></i> Church History Before the Bible</h2>
+            <p>This goes deep into the church's history without the Bible, just the Old Testament. The church was there before the Bible was created. For example, St. Paul's letter to the Galatians was written in 48-49 AD, but the gospel was made later in 64 AD. Despite only having the prophets and the Old Testament, the church was fruitful and multiplied abundantly.</p>
+        </div>
+
+        <div class="eotc-card fade-in">
+            <h2><i class="bi bi-journal-text"></i> The Nicene Creed</h2>
+            <p>The Orthodox Faith believes in the Nicene Creed, which is a clear statement of their faith overall.</p>
+            <div class="creed-text">
+                We believe in one God, the Father Almighty, Who created heaven and earth and all things seen and unseen. We believe in one Lord, Jesus Christ, the Only-Begotten Son of God, begotten of the Father before all ages. Light from Light, true God from true God, begotten not created, of one essence with the Father, by Whom all things were made...
+            </div>
+        </div>
+
+        <div class="eotc-card fade-in">
+            <h2><i class="bi bi-layers"></i> The 5 Pillars of the Faith</h2>
+            <p>The Orthodox Faith believes in 5 core concepts of their faith:</p>
+            <div class="pillar">
+                <strong>1. Mystery of the Trinity</strong> — There is one God but in three persons: the Father, the Son, and the Holy Spirit. They are all one in three.
+            </div>
+            <div class="pillar">
+                <strong>2. The Incarnation</strong> — God became man in the person of Jesus Christ.
+            </div>
+            <div class="pillar">
+                <strong>3. The Church</strong> — The one holy, universal, and apostolic Church.
+            </div>
+            <div class="pillar">
+                <strong>4. The Sacraments</strong> — The sacred mysteries of the faith.
+            </div>
+            <div class="pillar">
+                <strong>5. The Resurrection</strong> — The resurrection of the dead and life in the world to come.
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-brand">Amen<span>.</span></div>
+        <p style="color: var(--muted); font-size: 0.9rem;">Student · Coder · Explorer</p>
+        <div class="social-links">
+            <a href="https://github.com/thecod-bit" class="social-link"><i class="bi bi-github"></i></a>
+            <a href="mailto:your@email.com" class="social-link"><i class="bi bi-envelope"></i></a>
+        </div>
+        <p class="footer-copy">© 2026 Amen Manakelew. All rights reserved.</p>
+    </footer>
+
+    <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('back-to-top').classList.toggle('show', window.scrollY > 400);
+        });
+
+        function toggleTheme() {
+            document.body.classList.toggle('light');
+            const btn = document.querySelector('.dark-toggle');
+            btn.textContent = document.body.classList.contains('light') ? '🌙 Dark' : '☀️ Light';
+        }
+    </script>
+
+</body>
+</html>
